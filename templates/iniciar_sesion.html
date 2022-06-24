@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+{% with mensajes = get_flashed_messages() %}
+
+    {% if mensajes %}
+        {% for mensaje in mensajes %}
+            {{mensaje}}
+        {% endfor %}
+    {% endif %}
+
+{% endwith %}
+
+<form action="/iniciarSesion" method="POST" class="card">
+    
+    <div class="container px-4">
+        <label for="correo">Correo</label>
+        <input type="text" name="correo" placeholder="Correo" class="form-control">
+    </div>
+    
+    <div class="container px-4">
+        <label for="password">Contraseña</label>
+        <input type="password" name="password" placeholder="Contraseña" class="form-control">
+    </div>
+
+    <div class="mb-3 mt-3 mx-4">
+        <button class="btn btn-primary">Ingresar</button>
+        <a href="{{ url_for('usuarios.registrar_usuario') }}" class="btn btn-dark">Registrarse</a>
+    </div>
+
+</form>
+
+
+{% endblock %}
